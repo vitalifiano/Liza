@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liza Lopez</title>
+</head>
+<body>
+
+
+
+    <div id="card">
+
+
+        <div class="background">
+
+        
+        <h1>Paalam Tita Liza</h1>
+<br>
+
+        <h2 style="text-align:center;"> A Silent Tear </h2>
+
+<br>
+
+<div class="textbox">
+
+    <ol style="list-style:none;">
+
+        <li> Just close your eyes and you will see</li>
+        <li>All the memories that you have of me</li>
+        <li>Just sit and relax and you will find</li>
+        <li>I'm really still there inside your mind</li>
+
+        <br>
+
+        <li>Don't cry for me now I'm gone</li>
+        <li>For I am in the land of song</li>
+        <li>There is no pain, there is no fear</li>
+        <li>So dry away that silent tear</li>
+
+<br>
+
+        <li>Don't think of me in the dark and cold</li>
+        <li>For here I am, no longer old</li>
+        <li>I'm in that place that's filled with love</li>
+        <li>Known to you all, as "up above"</li>
+
+
+<br>
+
+
+    </ol>
+
+
+
+
+       
+          
+    </div>
+
+    <br>
+
+    <div id="videoContainer"></div>
+</div>
+
+</div>
+
+
+
+    </div>
+
+
+
+<style>
+
+#card {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    width: auto;
+    height: auto;
+    background-color:black;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#card h1 {
+    color:white;
+    padding: 5px;
+    border-radius: 25px;
+    border: 3px solid white;
+    font-size: 55px;
+}
+
+#card h2 {
+    margin:auto;
+    width:50%;
+    color:white;
+    padding: 10px;
+    border-radius: 25px;
+    border: 3px solid white;
+    font-size: 30px;
+}
+
+
+#card:hover h1 {
+    color: white;
+    text-shadow: 2px 2px 4px grey;
+    border-style:double;
+}
+
+
+#card .textbox{
+  font-size: 30px;
+  padding-right:41px;
+  margin:auto;
+  color: white;
+  border: 6px solid white;
+  border-radius: 25px;
+  width:fit-content;
+  border-style: double;
+  font-family: "Times New Roman", serif;
+}
+
+.sprite {
+  transition: opacity 0.3s ease;
+}
+
+.sprite:hover {
+  opacity: 0.7;
+}
+
+
+.background {
+    background: url(background.jpg) ;
+    background-size:cover;
+    background-position:center;
+  }
+
+</style>
+
+
+
+
+
+    <script>
+
+var leftSprite = document.createElement("img");
+leftSprite.src = "Liza1.jpg"; // Replace with the path to your left sprite image
+leftSprite.style.position = "absolute";
+leftSprite.style.left = "0";
+leftSprite.style.top = "50%";
+leftSprite.style.transform = "translateY(-50%)";
+leftSprite.style.borderRadius = "15%";
+leftSprite.style.width = "22%";
+document.body.appendChild(leftSprite);
+
+var rightSprite = document.createElement("img");
+rightSprite.src = "Liza2.jpg"; // Replace with the path to your right sprite image
+rightSprite.style.position = "absolute";
+rightSprite.style.right = "0";
+rightSprite.style.top = "50%";
+rightSprite.style.transform = "translateY(-50%)";
+rightSprite.style.borderRadius = "15%";
+document.body.appendChild(rightSprite);
+
+// Function to animate the shaking effect
+function shake(element, angle, duration) {
+  var originalAngle = 0;
+  var startTime = null;
+
+  function updateRotation(timestamp) {
+    if (!startTime) {
+      startTime = timestamp;
+    }
+
+    var elapsedTime = timestamp - startTime;
+    var progress = elapsedTime / duration;
+    var rotation = originalAngle + Math.sin(progress * Math.PI * 2) * angle;
+
+    element.style.transform = "translateY(-50%) rotate(" + rotation + "deg)";
+
+    if (elapsedTime < duration) {
+      requestAnimationFrame(updateRotation);
+    } else {
+      element.style.transform = "translateY(-50%) rotate(0deg)";
+    }
+  }
+
+  requestAnimationFrame(updateRotation);
+}
+
+// Add event listeners for hover
+leftSprite.onmouseover = function() {
+  shake(leftSprite, 10, 300);
+};
+
+rightSprite.onmouseover = function() {
+  shake(rightSprite, -10, 300);
+};
+
+
+
+
+        var videoContainer = document.getElementById("videoContainer");
+        var videoSource = "Liza.mov"; // Replace with the path to your video source
+
+        if (videoSource) {
+            var video = document.createElement("video");
+            video.src = videoSource;
+            video.controls = true;
+            video.style.width = "50%";
+            video.style.borderRadius = "25%";
+            videoContainer.appendChild(video);
+        }
+
+    </script>
+</body>
+</html>
